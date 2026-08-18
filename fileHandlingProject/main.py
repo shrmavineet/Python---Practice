@@ -11,7 +11,8 @@ def readfile():
     try:
         readfileandfolder()
         name = input("Which file you want to read: ")
-        p =Path(name)
+        basepath = Path("fileHandlingProject")
+        p = basepath / name
         if p.exists() and p.is_file():
             with open(p,'r') as fs:
                 data = fs.read()
@@ -27,8 +28,9 @@ def createfile():
     try:
         readfileandfolder()
         name = input("please tell your file name: ")
-        p = Path(name)
-        if not p.exists() and p.is_file():
+        basepath = Path("fileHandlingProject")
+        p = basepath / name
+        if not p.exists():
             with open(p, "w") as fs:
                 data = input("what you want to write int his file: ")
                 fs.write(data)
@@ -71,7 +73,8 @@ def deletefile():
     try:
         readfileandfolder()
         name = input("which file you want to delete: ")
-        p = Path(name)
+        basepath = Path("fileHandlingProject")
+        p = basepath / name
 
         if p.exists() and p.is_file():
             os.remove(p)
